@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 using namespace std;
-ádasdasdasdasdasdasdasdasdasd
+
 
 void Quicksort(int *a, int l, int r){
     int x = a[(l+r)/2]; //xac dinh gia tri truc x(phan tu chinh giua)
