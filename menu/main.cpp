@@ -3,16 +3,17 @@
 #include <stdlib.h>
 using namespace std;
 
-void QuickSort(int* ,int , int);
 void SelectionSort(int* ,int);
-void Merge(int*, int, int, int);
-void MergeSort(int *, int, int);
+void InterchangeSort(int *, int);
 void InsertionSort(int *, int);
 void BinaryInsertionSort(int *, int);
 void BubbleSort(int *, int);
-void InterchangeSort(int *, int);
-void HeapSort(int*, int); 
 void ShakerSort(int*, int, int);
+void CountingSort(int *, int);
+void QuickSort(int* ,int , int);
+void Merge(int*, int, int, int);
+void MergeSort(int *, int, int);
+void HeapSort(int*, int); 
 int getInteger();
 void generateArray(int *, int);
 void output(int *, int);
@@ -38,7 +39,7 @@ int main()
             case 1:
             {
                 clock_t start = clock();
-                Quicksort(b,0,n-1);
+                SelectionSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< end - start <<endl;
                 break;
@@ -46,7 +47,7 @@ int main()
             case 2:
             {
                 clock_t start = clock();
-                SelectionSort(b,n);
+                InterchangeSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< end - start <<endl;
                 break;
@@ -54,7 +55,7 @@ int main()
             case 3:
             {
                 clock_t start = clock();
-                BubbleSort(b,n);
+                InsertionSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< end - start <<endl;
                 break;
@@ -62,7 +63,7 @@ int main()
             case 4:
             {
                 clock_t start = clock();
-                MergeSort(b,0,n-1);
+                BinaryInsertionSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< end - start <<endl;
                 break;
@@ -70,7 +71,7 @@ int main()
             case 5:
             {
                 clock_t start = clock();
-                BinaryInsertionSort(b,n);
+                BubbleSort(b,n);
                 clock_t end = clock();
                 cout<<"Time: "<< end - start <<endl;
                 break;
@@ -78,7 +79,7 @@ int main()
             case 6:
             {
                 clock_t start = clock();
-                BubbleSort(b,n);
+                ShakerSort(b,0,n-1);
                 clock_t end = clock();
                 cout << "Time: " << end - start << endl;
                 break;
@@ -86,7 +87,7 @@ int main()
             case 7:
             {
                 clock_t start = clock();
-                InterchangeSort(b,n);
+                //CountingSort(b,n);
                 clock_t end = clock();
                 cout << "Time:" << end - start << endl;
                 break;
@@ -94,7 +95,7 @@ int main()
             case 8:
             {
                 clock_t start = clock();
-                HeapSort(b,n);
+                QuickSort(b,0,n-1);
                 clock_t end = clock();
                 cout << "Time: " << end - start << endl;
                 break;
@@ -102,11 +103,36 @@ int main()
             case 9:
             {
                 clock_t start = clock();
-                ShakerSort(a,0,n-1);
+                MergeSort(a,0,n-1);
                 clock_t end = clock();
                 cout << "Time: " << end - start << endl;
                 break;
             }
+            case 10:
+            {
+                clock_t start = clock();
+                HeapSort(b,n);
+                clock_t end = clock();
+                cout << "Time: " << end - start << endl;
+                break;
+            }
+            case 11:
+            {
+                clock_t start = clock();
+                //Shellsort(b,n);
+                clock_t end = clock();
+                cout << "Time: " << end - start << endl;
+                break;
+            }
+            case 12:
+            {
+                clock_t start = clock();
+                //RadixSort(b,n);
+                clock_t end = clock();
+                cout << "Time: " << end - start << endl;
+                break;
+            }
+
         }
         cout<<"Do you want to continue (Y/n)";
         char c;
@@ -125,7 +151,7 @@ int main()
 
 
 
-void Quicksort(int *a, int l, int r)
+void QuickSort(int *a, int l, int r)
 {
     int x = a[(l+r)/2]; //xac dinh gia tri truc x(phan tu chinh giua)
     int i = l; //khoi tao dau doc i
@@ -147,10 +173,9 @@ void Quicksort(int *a, int l, int r)
             i++;
             j--;
         }//hoan vi 2 phan tu tai i,j sau do tang i, giam j de bat dau cho vi tri moi
-
     }
-    if(l<j) Quicksort(a,l,j);
-    if(i<r) Quicksort(a,i,r);//tiep tuc cho i,j chay nen lap tu buoc 3 den buoc 5 cho den khi j vuot qua i thi dung
+    if(l<j) QuickSort(a,l,j);
+    if(i<r) QuickSort(a,i,r);//tiep tuc cho i,j chay nen lap tu buoc 3 den buoc 5 cho den khi j vuot qua i thi dung
 }
 
 void SelectionSort(int *a, int n)
@@ -348,15 +373,18 @@ void copyArray(int *a, int *b, int n)
 void Menu()
 {
     cout << "\n-------MENU-------" << endl;
-    cout << "1.QuickSort" << endl;
-    cout << "2.SelectionSort" << endl;
-    cout << "3.MergeSort" << endl;
-    cout << "4.Insertion" << endl;
-    cout << "5.BinaryInsertionSort" << endl;
-    cout << "6.BubleSort" << endl;
-    cout << "7.InterchangeSort" << endl;
-    cout << "8.HeapSort" << endl;
-    cout << "9.ShakerSort" << endl;
+    cout << "1.Selection Sort" << endl;
+    cout << "2.Interchange Sort" << endl;
+    cout << "3.Insertion Sort" << endl;
+    cout << "4.Binary Insertion Sort" << endl;
+    cout << "5.Bubble Sort" << endl;
+    cout << "6.Shaker Sort" << endl;
+    cout << "7.Counting Sort" << endl;
+    cout << "8.Quick Sort" << endl;
+    cout << "9.Merge Sort" << endl;
+    cout << "10.Heap Sort" << endl;
+    cout << "11.Shell Sort" << endl;
+    cout << "12.Radix Sort" << endl;
     cout << "Choose an algorithm: " << endl;
 
 }
