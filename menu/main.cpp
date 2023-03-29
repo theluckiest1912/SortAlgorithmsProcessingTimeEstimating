@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 using namespace std;
+//alo
 
 void SelectionSort(int* ,int);
 void InterchangeSort(int *, int);
